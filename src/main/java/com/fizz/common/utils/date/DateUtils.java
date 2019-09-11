@@ -23,13 +23,10 @@ public class DateUtils {
     public static final long NOW = -1;
 
     public enum DateDimension{
-        DAY("DAY"),
-        WEEK("WEEK"),
-        MONTH("MONTH"),
-        YEAR("YEAR");
-
-        DateDimension(String value) {
-        }
+        DAY,
+        WEEK,
+        MONTH,
+        YEAR;
     }
 
     /**
