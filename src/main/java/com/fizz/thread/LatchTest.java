@@ -1,4 +1,4 @@
-package com.fizz.common.thread;
+package com.fizz.thread;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.Semaphore;

@@ -1,4 +1,4 @@
-package com.fizz.common.thread;
+package com.fizz.thread;
 
 /**
  * @author Fizz

@@ -1,4 +1,4 @@
-package com.fizz.common.servlet;
+package com.fizz.servlet;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;

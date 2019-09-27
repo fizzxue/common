@@ -1,6 +1,6 @@
-package com.fizz.common.cache.service.impl;
+package com.fizz.cache.service.impl;
 
-import com.fizz.common.cache.service.CacheService;
+import com.fizz.cache.service.CacheService;
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
 import lombok.extern.slf4j.Slf4j;
