@@ -2,12 +2,17 @@ package com.fizz.rest;
 
 import com.fizz.common.response.RespModel;
 import com.fizz.utils.date.RespUtils;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.util.*;
+import javax.annotation.Resource;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author Fizz
@@ -16,14 +21,17 @@ import java.util.*;
 @Controller
 public class DemoController {
 
+    @Resource
+    private JdbcTemplate jdbcTemplate;
+
     @GetMapping("/table/list")
     @ResponseBody
     public RespModel list() {
-        List list = new ArrayList();
         Map map = new HashMap();
         map.put("items", Arrays.asList("{'id':'1'}", "{'id':'2'}"));
         map.put("total", "20");
-        return RespUtils.success(map);
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student");
+        return RespUtils.success(maps);
     }
 
     @PostMapping("/user/login")

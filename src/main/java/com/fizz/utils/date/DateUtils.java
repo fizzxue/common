@@ -188,7 +188,7 @@ public class DateUtils {
             result = "0时" + result;
         }
         if (!result.contains("分")) {
-            int index = result.indexOf("时") + 1;
+            int index = result.indexOf('时') + 1;
             result = result.substring(0, index) + "0分" + result.substring(index);
         }
         if (!result.contains("秒")) {

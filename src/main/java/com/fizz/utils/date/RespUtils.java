@@ -9,6 +9,9 @@ import com.fizz.common.response.RespModel;
  */
 public class RespUtils {
 
+    private RespUtils() {
+    }
+
     public static <R> RespModel<R> success(R data) {
         return new RespModel<R>().setCode(RespEnum.SUCCESS).setData(data);
     }

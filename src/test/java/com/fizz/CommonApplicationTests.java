@@ -18,6 +18,8 @@ public class CommonApplicationTests {
 
     @Test
     public void contextLoads() {
+        int i =0;
+        i += 1;
         System.out.println(cacheService);
 
         cacheService.put("xll", 22);

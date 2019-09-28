@@ -1,5 +1,7 @@
 package com.fizz.servlet;
 
+import lombok.extern.slf4j.Slf4j;
+
 import javax.servlet.*;
 import javax.servlet.annotation.WebServlet;
 import java.io.IOException;
@@ -11,6 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * @since 2019/9/19 15:04
  */
 @WebServlet(urlPatterns = "/servlet")
+@Slf4j
 public class ServletTest implements Servlet {
 
     @Override
@@ -31,7 +34,8 @@ public class ServletTest implements Servlet {
             try {
                 Thread.sleep(10000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                log.error(e.getMessage(), e);
+                Thread.currentThread().interrupt();
             }
         }
         PrintWriter pw = servletResponse.getWriter();
