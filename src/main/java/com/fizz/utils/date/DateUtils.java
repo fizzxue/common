@@ -21,9 +21,21 @@ public class DateUtils {
     public static final long NOW = -1;
 
     public enum DateDimension{
+        /**
+         * 日
+         */
         DAY,
+        /**
+         * 周
+         */
         WEEK,
+        /**
+         * 月
+         */
         MONTH,
+        /**
+         * 年
+         */
         YEAR;
     }
 
@@ -33,7 +45,9 @@ public class DateUtils {
      * @return LocalDateTime
      */
     public static LocalDateTime ms2LocalDateTime(long milliSecond){
-        if (milliSecond == NOW) return LocalDateTime.now();
+        if (milliSecond == NOW) {
+            return LocalDateTime.now();
+        }
         return LocalDateTime.ofInstant(Instant.ofEpochMilli(milliSecond), ZoneId.systemDefault());
     }
 

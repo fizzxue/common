@@ -8,7 +8,13 @@ import lombok.Getter;
  */
 @Getter
 public enum RespEnum {
+    /**
+     * 成功
+     */
     SUCCESS(20000, "操作成功"),
+    /**
+     * 失败
+     */
     FAILURE(500, "操作失败");
 
     private Integer code;

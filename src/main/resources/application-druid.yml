@@ -1,0 +1,26 @@
+# druid config list
+spring:
+  datasource:
+    druid:
+      initial-size: 5
+      max-active: 20
+      min-idle: 10
+      max-wait: 60000
+      min-evictable-idle-time-millis: 600000
+      max-evictable-idle-time-millis: 900000
+      validation-query: select 1
+      filters: mergeStat,wall,slf4j
+      #      连接回收的时候控制台打印信息
+      log-abandoned: true
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        session-stat-enable: true
+        profile-enable: true
+      stat-view-servlet:
+        enabled: true
+        allow: 127.0.0.1
+        url-pattern: /druid/*
+      filter:
+        wall:
+          db-type: mysql

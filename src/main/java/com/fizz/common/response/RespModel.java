@@ -5,6 +5,11 @@ import com.fizz.common.enums.RespEnum;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+/**
+ * @param <T>
+ * @author Fizz
+ * @since 2019/9/11 10:44
+ */
 @Data
 @Accessors(chain = true)
 public class RespModel<T> {

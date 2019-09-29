@@ -30,15 +30,18 @@ public class CacheServiceImpl<K, V> implements CacheService<K, V> {
                 .build();
     }
 
+    @Override
     public V put(K key, V value) {
         cache.put(key, value);
         return value;
     }
 
+    @Override
     public V get(@NonNull Object key) {
         return cache.getIfPresent(key);
     }
 
+    @Override
     public Map<K, V> getAll(Iterable<? extends K> keys) {
         return cache.getAllPresent(keys);
     }
