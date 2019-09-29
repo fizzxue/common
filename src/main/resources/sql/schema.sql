@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS `student`;
 CREATE TABLE `student`
 (
     `id`   varchar(255) NOT NULL,

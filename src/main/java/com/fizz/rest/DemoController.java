@@ -30,7 +30,8 @@ public class DemoController {
         Map map = new HashMap();
         map.put("items", Arrays.asList("{'id':'1'}", "{'id':'2'}"));
         map.put("total", "20");
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student");
+        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student where id=1");
+        List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from student where id=2");
         return RespUtils.success(maps);
     }
 
