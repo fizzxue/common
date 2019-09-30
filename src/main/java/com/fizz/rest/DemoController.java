@@ -27,7 +27,7 @@ public class DemoController {
     @GetMapping("/table/list")
     @ResponseBody
     public RespModel list() {
-        Map map = new HashMap();
+        Map map = new HashMap(2);
         map.put("items", Arrays.asList("{'id':'1'}", "{'id':'2'}"));
         map.put("total", "20");
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student where id=1");
