@@ -34,4 +34,4 @@ spring:
         stat:
           enabled: true
           log-slow-sql: true
-          slow-sql-millis: 100
+          slow-sql-millis: 1000

@@ -1,17 +1,15 @@
 package com.fizz.rest;
 
+import com.fizz.business.service.StudentService;
 import com.fizz.common.response.RespModel;
 import com.fizz.utils.date.RespUtils;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -22,17 +20,17 @@ import java.util.Map;
 public class DemoController {
 
     @Resource
-    private JdbcTemplate jdbcTemplate;
+    private StudentService studentService;
 
     @GetMapping("/table/list")
     @ResponseBody
-    public RespModel list() {
+    public RespModel list() throws Exception {
         Map map = new HashMap(2);
-        map.put("items", Arrays.asList("{'id':'1'}", "{'id':'2'}"));
         map.put("total", "20");
-        List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student where id=1");
-        List<Map<String, Object>> maps1 = jdbcTemplate.queryForList("select * from student where id=2");
-        return RespUtils.success(maps);
+//        List<Student> list = studentService.list();
+//        map.put("items", list);
+        map.put("items2", studentService.saveForTran2());
+        return RespUtils.success(map);
     }
 
     @PostMapping("/user/login")
