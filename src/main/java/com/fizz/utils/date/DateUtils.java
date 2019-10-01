@@ -14,7 +14,7 @@ import java.time.temporal.TemporalAdjusters;
  * @author Fizz
  * @since 2019/9/11 10:44
  */
-public class DateUtils {
+public final class DateUtils {
 
     public static final DateTimeFormatter DTF = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
@@ -37,6 +37,9 @@ public class DateUtils {
          * 年
          */
         YEAR;
+    }
+
+    private DateUtils() {
     }
 
     /**

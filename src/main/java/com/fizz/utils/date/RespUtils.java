@@ -7,7 +7,7 @@ import com.fizz.common.model.RespModel;
  * @author Fizz
  * @since 2019/9/27 16:20
  */
-public class RespUtils {
+public final class RespUtils {
 
     private RespUtils() {
     }
