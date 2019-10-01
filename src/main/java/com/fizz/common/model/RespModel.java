@@ -1,4 +1,4 @@
-package com.fizz.common.response;
+package com.fizz.common.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fizz.common.enums.RespEnum;

@@ -1,7 +1,8 @@
 package com.fizz.rest;
 
+import com.fizz.business.model.Student;
 import com.fizz.business.service.StudentService;
-import com.fizz.common.response.RespModel;
+import com.fizz.common.model.RespModel;
 import com.fizz.utils.date.RespUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -27,9 +29,8 @@ public class DemoController {
     public RespModel list() throws Exception {
         Map map = new HashMap(2);
         map.put("total", "20");
-//        List<Student> list = studentService.list();
-//        map.put("items", list);
-        map.put("items2", studentService.saveForTran2());
+        List<Student> list = studentService.list();
+        map.put("items", list);
         return RespUtils.success(map);
     }
 

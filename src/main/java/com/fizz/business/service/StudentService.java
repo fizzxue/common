@@ -2,6 +2,8 @@ package com.fizz.business.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.fizz.business.model.Student;
+import com.fizz.common.model.RespModel;
+import com.fizz.utils.page.ReqPageModel;
 
 /**
  * @author Fizz
@@ -9,7 +11,5 @@ import com.fizz.business.model.Student;
  */
 public interface StudentService extends IService<Student> {
 
-    boolean saveForTran1() throws Exception;
-
-    boolean saveForTran2() throws Exception;
+    RespModel page(ReqPageModel reqPageModel);
 }

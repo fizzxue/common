@@ -1,7 +1,7 @@
 package com.fizz.utils.date;
 
 import com.fizz.common.enums.RespEnum;
-import com.fizz.common.response.RespModel;
+import com.fizz.common.model.RespModel;
 
 /**
  * @author Fizz

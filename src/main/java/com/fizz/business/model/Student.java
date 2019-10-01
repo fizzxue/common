@@ -21,7 +21,7 @@ public class Student implements Serializable {
 
     private String name;
 
-    private short sex;
+    private Short sex;
 
     private Date createTime;
 
