@@ -12,4 +12,6 @@ import com.fizz.utils.page.ReqPageModel;
 public interface StudentService extends IService<Student> {
 
     RespModel page(ReqPageModel reqPageModel);
+
+    String role();
 }
