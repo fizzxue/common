@@ -3,8 +3,10 @@ package com.fizz.config.shiro;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -32,10 +34,14 @@ public class AuthRealm extends AuthorizingRealm {
         if (!"admin".equals(userName)) {
             throw new UnknownAccountException("用户名错误！");
         }
-        if (!"123456".equals(password)) {
-            throw new IncorrectCredentialsException("密码错误");
-        }
-        return new SimpleAuthenticationInfo(userName, password, getName());
+//        if (!"123456".equals(password)) {
+//            throw new IncorrectCredentialsException("密码错误");
+//        }
+        return new SimpleAuthenticationInfo(userName, password, ByteSource.Util.bytes(userName + ShiroConfig.SALT), getName());
+    }
+
+    public static String md5(String source, String salt) {
+        return new SimpleHash(ShiroConfig.ALGORITHM_NAME, source, ByteSource.Util.bytes(salt), ShiroConfig.HASH_ITERATIONS).toString();
     }
 
 }

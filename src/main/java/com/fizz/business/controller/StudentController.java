@@ -5,7 +5,7 @@ import com.fizz.common.model.RespModel;
 import com.fizz.utils.page.ReqPageModel;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.session.Session;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,18 +35,13 @@ public class StudentController {
     @ResponseBody
     public String shiro() {
         Subject subject = SecurityUtils.getSubject();
-        System.out.println(subject.isAuthenticated());
         subject.login(new UsernamePasswordToken("admin", "123456"));
-        System.out.println(subject.isAuthenticated());
-//        System.out.println(SpringUtils.getBean(this.getClass()).role());
-        System.out.println(studentService.role());
+        Session session = subject.getSession();
+        System.out.println(session);
+        System.out.println(session.getStartTimestamp());
+        System.out.println(session.getLastAccessTime());
         subject.logout();
         return "login";
     }
 
-    @RequiresRoles(value = "role2")
-    public String role() {
-        System.out.println(1111111111);
-        return SecurityUtils.getSubject().hasRole("aa") + "";
-    }
 }
