@@ -1,17 +1,18 @@
 package com.fizz.rest;
 
-import com.fizz.business.model.Student;
-import com.fizz.business.service.StudentService;
 import com.fizz.common.model.RespModel;
+import com.fizz.config.shiro.ShiroConfig;
 import com.fizz.utils.date.RespUtils;
+import com.fizz.utils.hash.MD5Utils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.annotation.Resource;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -21,17 +22,21 @@ import java.util.Map;
 @Controller
 public class DemoController {
 
-    @Resource
-    private StudentService studentService;
-
     @GetMapping("/table/list")
     @ResponseBody
     public RespModel list() throws Exception {
         Map map = new HashMap(2);
         map.put("total", "20");
-        List<Student> list = studentService.list();
-        map.put("items", list);
+        Subject subject = SecurityUtils.getSubject();
+        subject.login(new UsernamePasswordToken("zgl", "123456"));
+//        List<Student> list = studentService.list();
+//        map.put("items", list);
         return RespUtils.success(map);
+    }
+
+
+    public static void main(String[] args) {
+        System.out.println(MD5Utils.md5("123456", "zgl" + ShiroConfig.SALT));
     }
 
     @PostMapping("/user/login")

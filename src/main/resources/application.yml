@@ -13,7 +13,7 @@ spring:
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
-    initialization-mode: always
+    initialization-mode: never
     schema: classpath*:sql/schema.sql
     data: classpath*:sql/data.sql
   jackson:

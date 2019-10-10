@@ -1,14 +1,17 @@
 package com.fizz.config.shiro;
 
+import com.fizz.business.acl.entity.User;
+import com.fizz.business.acl.service.IUserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
-import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
 
+import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -17,6 +20,20 @@ import java.util.Set;
  */
 public class AuthRealm extends AuthorizingRealm {
 
+    @Resource
+    private IUserService iUserService;
+
+    @Override
+    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
+        String userName = (String) authenticationToken.getPrincipal();
+        User userByAccount = iUserService.getUserByAccount(userName);
+        if (Objects.isNull(userByAccount)) {
+            throw new UnknownAccountException("用户名或密码错误！");
+        }
+        return new SimpleAuthenticationInfo(userByAccount, userByAccount.getPassword(),
+                ByteSource.Util.bytes(userName + ShiroConfig.SALT), getName());
+    }
+
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principalCollection) {
         Set<String> roles = new HashSet<>();
@@ -24,24 +41,6 @@ public class AuthRealm extends AuthorizingRealm {
         SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         simpleAuthorizationInfo.addRoles(roles);
         return simpleAuthorizationInfo;
-    }
-
-    @Override
-    protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
-        String userName = (String) authenticationToken.getPrincipal();
-        String password = new String((char[]) authenticationToken.getCredentials());
-        //todo 查询数据库
-        if (!"admin".equals(userName)) {
-            throw new UnknownAccountException("用户名错误！");
-        }
-//        if (!"123456".equals(password)) {
-//            throw new IncorrectCredentialsException("密码错误");
-//        }
-        return new SimpleAuthenticationInfo(userName, password, ByteSource.Util.bytes(userName + ShiroConfig.SALT), getName());
-    }
-
-    public static String md5(String source, String salt) {
-        return new SimpleHash(ShiroConfig.ALGORITHM_NAME, source, ByteSource.Util.bytes(salt), ShiroConfig.HASH_ITERATIONS).toString();
     }
 
 }

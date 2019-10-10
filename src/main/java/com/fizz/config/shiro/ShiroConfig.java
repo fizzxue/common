@@ -42,7 +42,7 @@ public class ShiroConfig {
     public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
         shiroFilterFactoryBean.setSecurityManager(securityManager);
-        String loginUrl = "/dev-api/student/shiro";
+        String loginUrl = "/dev-api/table/list";
         shiroFilterFactoryBean.setLoginUrl(loginUrl);
         shiroFilterFactoryBean.setSuccessUrl("/success");
         shiroFilterFactoryBean.setUnauthorizedUrl("withoutRole");
@@ -102,8 +102,6 @@ public class ShiroConfig {
         HashedCredentialsMatcher hashedCredentialsMatcher = new HashedCredentialsMatcher();
         hashedCredentialsMatcher.setHashAlgorithmName(ShiroConfig.ALGORITHM_NAME);
         hashedCredentialsMatcher.setHashIterations(ShiroConfig.HASH_ITERATIONS);
-        // storedCredentialsHexEncoded默认是true，此时用的是密码加密用的是Hex编码；false时用Base64编码
-//        hashedCredentialsMatcher.setStoredCredentialsHexEncoded(true);
         return hashedCredentialsMatcher;
     }
 

@@ -8,7 +8,6 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
-import com.fizz.utils.spring.SpringUtils;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.ArrayList;
@@ -56,11 +55,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl(SpringUtils.getProperty("spring.datasource.url"));
+        dsc.setUrl("jdbc:mysql://localhost:3306/common?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&useAffectedRows=true");
         // dsc.setSchemaName("public");
-        dsc.setDriverName(SpringUtils.getProperty("spring.datasource.driver-class-name"));
-        dsc.setUsername(SpringUtils.getProperty("spring.datasource.username"));
-        dsc.setPassword(SpringUtils.getProperty("spring.datasource.password"));
+        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
+        dsc.setUsername("root");
+        dsc.setPassword("root");
         mpg.setDataSource(dsc);
 
         // 包配置

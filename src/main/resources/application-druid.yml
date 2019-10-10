@@ -10,10 +10,10 @@ spring:
       max-evictable-idle-time-millis: 900000
       validation-query: select 1
       filters: stat,wall,slf4j
-      #      配置removeAbandoned对性能会有一些影响，建议怀疑存在泄漏之后再打开。在下面的配置中，如果连接超过30分钟未关闭，就会被强行回收，并且日志记录连接申请时的调用堆栈。
+      # 配置removeAbandoned对性能会有一些影响，建议怀疑存在泄漏之后再打开。在下面的配置中，如果连接超过30分钟未关闭，就会被强行回收，并且日志记录连接申请时的调用堆栈。
       remove-abandoned: true
       remove-abandoned-timeout: 1800
-      #      连接回收的时候控制台打印信息
+      # 连接回收的时候控制台打印信息
       log-abandoned: true
       web-stat-filter:
         enabled: true
