@@ -8,6 +8,7 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.context.annotation.Lazy;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import java.util.Set;
 public class AuthRealm extends AuthorizingRealm {
 
     @Resource
+    @Lazy
     private IUserService iUserService;
 
     @Override
