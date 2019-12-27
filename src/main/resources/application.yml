@@ -18,6 +18,10 @@ spring:
     data: classpath*:sql/data.sql
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
+  data:
+    elasticsearch:
+      cluster-name: elasticsearch
+      cluster-nodes: 127.0.0.1:9300
 #    time-zone: GMT+8
 mybatis-plus:
   configuration:
