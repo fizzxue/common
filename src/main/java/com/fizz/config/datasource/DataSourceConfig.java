@@ -22,12 +22,18 @@ public class DataSourceConfig {
         return DruidDataSourceBuilder.create().build();
     }
 
-    @Bean
-    @Primary
-    @DependsOn({"springUtils", "defaultDataSource"})
-    public DynamicDataSource dataSource() {
-        DynamicDataSource dynamicDataSource = new DynamicDataSource();
-        dynamicDataSource.setTargetDataSources(DynamicDataSource.dataSourcesMap);
-        return dynamicDataSource;
-    }
+//    @Bean
+//    @Primary
+//    @DependsOn({"springUtils", "defaultDataSource"})
+//    public DynamicDataSource dataSource() {
+//        DynamicDataSource dynamicDataSource = new DynamicDataSource();
+//        dynamicDataSource.setTargetDataSources(DynamicDataSource.dataSourcesMap);
+//        return dynamicDataSource;
+//    }
+
+//    @Bean
+//    @ConfigurationProperties("spring.datasource.ds1")
+//    public DataSource dataSource() {
+//        return DruidDataSourceBuilder.create().build();
+//    }
 }

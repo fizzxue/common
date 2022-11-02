@@ -1,16 +1,33 @@
 package com.fizz;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import com.fizz.testtx.ThisTest;
+import com.fizz.testtx.UserLogic;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
+import javax.annotation.Resource;
+import javax.sql.DataSource;
+
 @SpringBootTest
+//@ImportResource(locations = "classpath:spring.xml")
 public class CommonApplicationTests {
 
+    @Resource
+    private UserLogic userLogic;
+
+    @Resource
+    private ThisTest thisTest;
+
+    @Resource
+    private DataSource dataSource;
+
     @Test
-    public void contextLoads() {
+    public void contextLoads() throws Throwable {
+//        System.out.println("===============" + userLogic);
+//        userLogic.updateUser();
+//        System.out.println(111);
+        thisTest.t4();
+//        System.out.println(dataSource);
     }
 
 }

@@ -1,10 +1,8 @@
 package com.fizz.es;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
 
 import javax.annotation.Resource;
 
@@ -12,7 +10,6 @@ import javax.annotation.Resource;
  * @author Fizz
  * @since 2019/12/13 16:10
  */
-@RunWith(SpringRunner.class)
 @SpringBootTest
 public class ESTest {
 
@@ -21,6 +18,5 @@ public class ESTest {
 
     @Test
     public void t1() {
-        boolean index = es.putMapping(Student.class);
     }
 }
