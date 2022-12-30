@@ -9,13 +9,14 @@ spring:
     servlet:
       path: /dev-api
   datasource:
-#    url: jdbc:mysql://192.168.1.111:3306/common?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&useAffectedRows=true
-    url: jdbc:h2:file:F:\h2\data\common;NON_KEYWORDS=USER
+    url: jdbc:mysql://192.168.1.101:3306/common?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&useAffectedRows=true
+#    url: jdbc:h2:file:F:\h2\data\common;NON_KEYWORDS=USER;
 #    url: jdbc:h2:file:F:\h2\data\common
     username: root
     password: root
     type: com.alibaba.druid.pool.DruidDataSource
-    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+#    driver-class-name: org.h2.Driver
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
   elasticsearch:
@@ -23,8 +24,10 @@ spring:
   sql:
     init:
       mode: never
-      schema-locations: classpath*:sql/h2/schema.sql
-      data-locations: classpath*:sql/h2/data.sql
+      schema-locations: classpath*:sql/mysql/schema.sql
+      data-locations: classpath*:sql/mysql/data.sql
+#      schema-locations: classpath*:sql/h2/schema.sql
+#      data-locations: classpath*:sql/h2/data.sql
 #    time-zone: GMT+8
 mybatis-plus:
   configuration:
