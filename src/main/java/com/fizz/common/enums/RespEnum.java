@@ -11,7 +11,7 @@ public enum RespEnum {
     /**
      * 成功
      */
-    SUCCESS(20000, "操作成功"),
+    SUCCESS(200, "操作成功"),
     /**
      * 失败
      */

@@ -28,4 +28,8 @@ public class RespModel<T> {
         this.message = respEnum.getMessage();
         return this;
     }
+
+    public static <R> RespModel<R> success(){
+        return new RespModel<R>().setCode(RespEnum.SUCCESS);
+    }
 }
