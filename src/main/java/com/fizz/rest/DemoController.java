@@ -24,8 +24,8 @@ public class DemoController {
 
     @GetMapping("/table/list")
     @ResponseBody
-    public RespModel list() throws Exception {
-        Map map = new HashMap(2);
+    public RespModel<Map<String,String>> list() throws Exception {
+        Map<String,String> map = new HashMap<>(2);
         map.put("total", "20");
         Subject subject = SecurityUtils.getSubject();
         subject.login(new UsernamePasswordToken("zgl", "123456"));

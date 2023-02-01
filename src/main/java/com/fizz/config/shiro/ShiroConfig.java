@@ -20,7 +20,7 @@ import java.util.Map;
  * @author Fizz
  * @since 2019/10/3 10:17
  */
-@Configuration
+//@Configuration
 public class ShiroConfig {
 
     /**
