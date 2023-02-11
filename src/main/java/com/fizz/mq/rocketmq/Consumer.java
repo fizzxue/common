@@ -1,17 +1,13 @@
 package com.fizz.mq.rocketmq;
 
 import cn.hutool.core.date.DateUtil;
-import com.fizz.utils.date.DateUtils;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
-import org.apache.rocketmq.remoting.common.RemotingHelper;
 
-import java.io.UnsupportedEncodingException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -25,7 +21,8 @@ public class Consumer {
         //订阅一个或多个topic，并指定tag过滤条件，这里指定*表示接收所有tag的消息
 
 //        consumer.subscribe("TopicTest-A", "*");
-        consumer.subscribe("OrderTopicTest-A", "*");
+//        consumer.subscribe("OrderTopicTest-A", "*");
+        consumer.subscribe("transTopicTest-A", "*");
 
         consumer.setConsumeMessageBatchMaxSize(12);
         System.out.printf("start at %s %n", DateUtil.formatDateTime(new Date()));
