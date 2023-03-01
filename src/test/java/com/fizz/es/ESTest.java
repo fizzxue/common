@@ -2,7 +2,7 @@ package com.fizz.es;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.data.elasticsearch.client.elc.ElasticsearchTemplate;
+import org.springframework.data.elasticsearch.core.ElasticsearchTemplate;
 
 import javax.annotation.Resource;
 
