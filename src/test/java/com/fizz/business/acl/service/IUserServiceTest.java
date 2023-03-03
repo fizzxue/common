@@ -1,7 +1,6 @@
 package com.fizz.business.acl.service;
 
 import com.alibaba.fastjson.JSON;
-import com.fizz.business.acl.mapper.RoleMapper;
 import com.fizz.business.acl.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
