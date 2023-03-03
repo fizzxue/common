@@ -15,7 +15,7 @@ spring:
   main:
     allow-circular-references: true
   datasource:
-    url: jdbc:mysql://192.168.1.111:3306/common?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&useAffectedRows=true
+    url: jdbc:mysql://192.168.1.111:3306/common?characterEncoding=utf-8&useSSL=false&serverTimezone=UTC&useAffectedRows=true&allowMultiQueries=true
 #    url: jdbc:h2:file:F:\h2\data\common;NON_KEYWORDS=USER;
 #    url: jdbc:h2:file:F:\h2\data\common
     username: root
@@ -38,7 +38,7 @@ spring:
 mybatis-plus:
   configuration:
     auto-mapping-unknown-column-behavior: warning
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
   global-config:
     db-config:
       id-type: auto
