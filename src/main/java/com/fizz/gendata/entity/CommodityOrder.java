@@ -19,12 +19,17 @@ public class CommodityOrder implements Serializable {
      * 主键
      */
     @TableId(type = IdType.INPUT)
-    private String id;
+    private Integer id;
 
     /**
      * 订单号
      */
     private String orderNo;
+
+    /**
+     * 域名
+     */
+    private String domain;
 
     /**
      * 订单描述

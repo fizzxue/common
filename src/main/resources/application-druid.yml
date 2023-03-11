@@ -31,6 +31,8 @@ spring:
           enabled: true
           log-violation: true
           throw-exception: false
+          config:
+            multi-statement-allow: true
         stat:
           enabled: true
           log-slow-sql: true

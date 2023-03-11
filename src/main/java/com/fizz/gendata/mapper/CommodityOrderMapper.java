@@ -9,5 +9,7 @@ import java.util.List;
 @Mapper
 public interface CommodityOrderMapper extends BaseMapper<CommodityOrder> {
 
-    public List<String> multiSelect(List<String> ids);
+    public List<CommodityOrder> multiSelect(List<CommodityOrder> ids);
+
+    public List<CommodityOrder> select();
 }

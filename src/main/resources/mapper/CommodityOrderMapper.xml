@@ -1,9 +1,28 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.fizz.gendata.mapper.CommodityOrderMapper">
-    <select id="multiSelect" parameterType="list" resultType="string">
-        <foreach collection="list" item="item" separator=";">
-            select #{item} from user
+    <select id="multiSelect" parameterType="list" resultType="com.fizz.gendata.entity.CommodityOrder">
+        select * from commodity_order where order_no in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+             #{item.orderNo}
         </foreach>
+        and domain in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            #{item.domain}
+        </foreach>
+
+<!--        select * from commodity_order where (order_no, domain) in
+        <foreach collection="list" item="item" separator="," open="(" close=")">
+            (#{item.orderNo},#{item.domain})
+        </foreach>-->
+
+<!--        select * from commodity_order where
+        <foreach collection="list" item="item" separator="or" open="(" close=")">
+            (order_no = #{item.orderNo} and domain = #{item.domain})
+        </foreach>-->
+    </select>
+
+    <select id="select" resultType="com.fizz.gendata.entity.CommodityOrder">
+        select * from commodity_order order by id desc limit 20000
     </select>
 </mapper>
