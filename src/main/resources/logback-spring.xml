@@ -46,5 +46,5 @@
     </logger>
 
     <logger name="org.springframework.jdbc.datasource" level="DEBUG"/>
-<!--    <logger name="org.apache.catalina.loader" level="DEBUG"/>-->
+    <logger name="org.apache.catalina.loader" level="DEBUG"/>
 </configuration>
