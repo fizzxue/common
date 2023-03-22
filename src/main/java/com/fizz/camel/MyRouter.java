@@ -10,9 +10,9 @@ public class MyRouter extends RouteBuilder {
     public void configure() throws Exception {
         System.out.println("==========================");
         from("quartz://report?cron=1 * * * * ?&stateful=true")
-                .to("http://localhost:8080/dev-api/a.txt")
+                .to("https://httpbin.org/image/png")
                 .log("1111111111111111111111111111111")
-                .to("file:d:/temp/outbox?fileName=http.csv")
+                .to("file:d:/temp/outbox?fileName=demo.png")
                 ;
     }
 }
