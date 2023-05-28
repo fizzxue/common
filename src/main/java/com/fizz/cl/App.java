@@ -7,7 +7,8 @@ public class App {
             try {
                 while (true) {
                     Thread.sleep(1000);
-                    Class<?> aClass = new MyClassLoader().loadClass("");
+                    MyClassLoader myClassLoader = new MyClassLoader();
+                    Class<?> aClass = myClassLoader.loadClass("com.fizz.cl.A");
                     Object a = aClass.newInstance();
                     a.getClass().getDeclaredMethod("a").invoke(a);
                 }
