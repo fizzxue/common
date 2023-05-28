@@ -17,11 +17,11 @@ public class MyClassLoader extends ClassLoader {
 
     @Override
     protected Class<?> findClass(String name) throws ClassNotFoundException {
-        Class<?> loadedClass = this.findLoadedClass(name);
-        if (loadedClass!=null) {
-            return loadedClass;
-        }
-        InputStream resourceAsStream = null;
+//        Class<?> loadedClass = this.findLoadedClass(name);
+//        if (loadedClass!=null) {
+//            return loadedClass;
+//        }
+        InputStream resourceAsStream;
         try {
             resourceAsStream = new FileInputStream("D:/IdeaProjects/common/target/classes/com/fizz/cl/" +
                     name.substring(name.lastIndexOf(".") + 1) +".class");
