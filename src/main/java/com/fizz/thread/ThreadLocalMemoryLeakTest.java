@@ -6,6 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * 内存泄漏案例
+ * https://code84.com/780705.html
  */
 public class ThreadLocalMemoryLeakTest {
     public static class LocalVariable {
