@@ -32,3 +32,5 @@ build/
 /src/main/resources/rebel.xml
 
 *.log
+
+.git11
