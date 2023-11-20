@@ -13,6 +13,8 @@ public class CookCommand implements Command {
 
     @Override
     public void execute() {
+        cookReceiver.cookBefore(param);
         cookReceiver.cook(param);
+        cookReceiver.cookAfter(param);
     }
 }

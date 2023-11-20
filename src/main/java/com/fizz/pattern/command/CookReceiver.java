@@ -7,4 +7,16 @@ public class CookReceiver {
         System.out.println(output);
         return output;
     }
+
+    public String cookBefore(String foodName) {
+        String output = "before cook" + foodName;
+        System.out.println(output);
+        return output;
+    }
+
+    public String cookAfter(String foodName) {
+        String output = "after cook" + foodName;
+        System.out.println(output);
+        return output;
+    }
 }
