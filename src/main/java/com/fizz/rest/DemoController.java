@@ -8,12 +8,11 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Fizz
@@ -21,6 +20,40 @@ import java.util.Map;
  */
 @Controller
 public class DemoController {
+
+    /**
+     * 测试慢执行
+     */
+    @RequestMapping("/hello/cycle")
+    @ResponseBody
+    public String helloCycle(@RequestParam Integer cycle) throws InterruptedException {
+        a();
+        return "hello cycle over";
+    }
+
+    @RequestMapping("/cycle")
+    @ResponseBody
+    public void cycle(@RequestParam Integer cycle) {
+        while (true) {
+            System.out.println("=====================");
+            byte[] b = new byte[1024*1024*5];
+        }
+//        return "cycle";
+    }
+
+    public void a() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(1);
+        b();
+    }
+
+    public void b() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(5);
+        c();
+    }
+
+    public void c() throws InterruptedException {
+        TimeUnit.SECONDS.sleep(10);
+    }
 
     @GetMapping("/table/list")
     @ResponseBody
