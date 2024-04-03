@@ -41,6 +41,14 @@ public class DemoController {
 //        return "cycle";
     }
 
+    @RequestMapping("/cpu")
+    @ResponseBody
+    public void cpu() {
+        while (true) {
+            System.out.println(123);
+        }
+    }
+
     public void a() throws InterruptedException {
         TimeUnit.SECONDS.sleep(1);
         b();
