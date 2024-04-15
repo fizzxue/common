@@ -1,4 +1,4 @@
-package com.fizz;
+package com.fizz.gc;
 
 /**
  * -Xms200m
@@ -16,11 +16,11 @@ public class GC {
     public static void main(String[] args) throws InterruptedException {
         Thread.sleep(10000);
         Byte[][] bb = new Byte[100][];
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; ; i++) {
             System.out.println("=====================  " + i);
             Byte[] b = new Byte[1024*1024*5];
-            bb[i] = b;
-            Thread.sleep(3000);
+//            bb[i] = b;
+            Thread.sleep(1);
         }
     }
 }
