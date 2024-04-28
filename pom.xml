@@ -36,6 +36,18 @@
     </dependencyManagement>
 
     <dependencies>
+<!--        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>20030418.083655</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>commons-pool</groupId>
+            <artifactId>commons-pool</artifactId>
+            <version>20030623.172700</version>
+        </dependency>
+
         <dependency>
             <groupId>com.alibaba.cola</groupId>
             <artifactId>cola-component-statemachine</artifactId>
