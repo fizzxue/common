@@ -9,20 +9,17 @@ import java.nio.channels.SocketChannel;
 import java.util.Iterator;
 import java.util.Scanner;
 
+/**
+ * https://blog.csdn.net/abc123lzf/article/details/80435511
+ */
 public class NioClient {
     public static void main(String[] args) throws Exception {
         SocketChannel socketChannel = SocketChannel.open();
         socketChannel.configureBlocking(false);
         InetSocketAddress inetSocketAddress = new InetSocketAddress("127.0.0.1", 9001);
         Selector selector = Selector.open();
-        socketChannel.register(selector, SelectionKey.OP_READ);
+        socketChannel.register(selector, SelectionKey.OP_CONNECT);
         socketChannel.connect(inetSocketAddress);
-
-        while (!socketChannel.finishConnect()) {
-            Thread.sleep(1000);
-        }
-
-        System.out.println("客户端[" + socketChannel.socket().getLocalPort()  +"]已连接");
 
         new Thread(() -> {
             try {
@@ -46,7 +43,18 @@ public class NioClient {
                 SelectionKey key = iterator.next();
                 iterator.remove();
 
-                 if (key.isReadable()) {
+                if(key.isConnectable()){
+                    SocketChannel clientSocket = (SocketChannel)key.channel();
+                    //这里需要检测是否完成连接
+                    if(clientSocket.finishConnect()){
+                        System.out.println("客户端[" + socketChannel.socket().getLocalPort()  +"]已连接");
+                        //连接成功后需要将选择器设置为对该通道的读事件感兴趣（不然同样会无限循环）
+                        key.interestOps(SelectionKey.OP_READ);
+                    }else{
+                        System.out.println("连接失败");
+                        System.exit(1);
+                    }
+                } else if (key.isReadable()) {
                     SocketChannel serverChannel = (SocketChannel) key.channel();
                     ByteBuffer buffer = ByteBuffer.allocate(1024);
                     int n = serverChannel.read(buffer);
