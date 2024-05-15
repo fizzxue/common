@@ -32,6 +32,18 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-common</artifactId>
+                <version>999-not-exist</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-transport</artifactId>
+                <version>999-not-exist</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
