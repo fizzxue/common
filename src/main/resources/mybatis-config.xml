@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <!-- mybatis数据源配置 -->
+<!--            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.1.111:3306/common?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC&amp;useAffectedRows=true&amp;allowMultiQueries=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>-->
+
+            <!-- druid数据源配置 -->
+            <dataSource type="com.fizz.business.acl.DruidDataSourceFactory">
+                <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://192.168.1.111:3306/common?characterEncoding=utf-8&amp;useSSL=false&amp;serverTimezone=UTC&amp;useAffectedRows=true&amp;allowMultiQueries=true"/>
+                <property name="username" value="root"/>
+                <property name="password" value="root"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="mapper/UserMapper.xml"/>
+    </mappers>
+</configuration>

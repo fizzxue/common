@@ -17,5 +17,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper extends BaseMapper<User> {
 
-    public List<String> multiSelect(List<String> ids);
+/*    List<String> multiSelect(List<String> ids);*/
+
+    User queryById(String id);
 }
