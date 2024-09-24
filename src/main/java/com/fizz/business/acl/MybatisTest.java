@@ -5,11 +5,8 @@ import com.fizz.business.acl.entity.User;
 import com.fizz.business.acl.mapper.UserMapper;
 import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
 import org.apache.ibatis.io.Resources;
-import org.apache.ibatis.session.Configuration;
+import org.apache.ibatis.session.*;
 import org.apache.ibatis.mapping.Environment;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 
@@ -45,13 +42,22 @@ public class MybatisTest {
 
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(Resources.getResourceAsReader("mybatis-config.xml"));
 
-        try (SqlSession session1 = sqlSessionFactory.openSession();SqlSession session2 = sqlSessionFactory.openSession()) {
+        try (SqlSession session1 = sqlSessionFactory.openSession(ExecutorType.BATCH);SqlSession session2 = sqlSessionFactory.openSession()) {
             UserMapper mapper1 = session1.getMapper(UserMapper.class);
             UserMapper mapper2 = session2.getMapper(UserMapper.class);
-            User user = mapper1.queryById("1");
+
+            User batchSave = new User();
+            batchSave.setId(System.currentTimeMillis() + "");
+            batchSave.setName("batchSave");
+            batchSave.setAccount("batchSave");
+            batchSave.setPassword("batchSave");
+            mapper1.insert(batchSave);
             session1.commit();
-            mapper2.queryById("1");
-            System.out.println(user);
+
+//            User user = mapper1.queryById("1");
+//            session1.commit();
+//            mapper2.queryById("1");
+//            System.out.println(user);
         }
     }
 
