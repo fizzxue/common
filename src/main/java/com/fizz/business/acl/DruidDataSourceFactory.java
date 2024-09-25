@@ -1,7 +1,7 @@
 package com.fizz.business.acl;
 
 import com.alibaba.druid.pool.DruidDataSource;
-import org.apache.ibatis.datasource.unpooled.UnpooledDataSourceFactory;
+import org.apache.ibatis.datasource.pooled.PooledDataSourceFactory;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
@@ -10,7 +10,7 @@ import java.sql.SQLException;
  * @author Fizz
  * @since 2024/9/22 14:26
  */
-public class DruidDataSourceFactory extends UnpooledDataSourceFactory {
+public class DruidDataSourceFactory extends PooledDataSourceFactory {
     // 数据源初始化
     @Override
     public DataSource getDataSource() {
